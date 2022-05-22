@@ -1,11 +1,11 @@
-package api.helpers.spec;
+package apiTools.helpers.spec;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-import static api.helpers.listners.CustomAllureListner.withCustomTemplates;
+import static apiTools.helpers.listners.CustomAllureListner.withCustomTemplates;
 
 public class RequestSpec {
     private String token;

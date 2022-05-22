@@ -1,13 +1,13 @@
 package tests;
 
-import api.controllers.Account;
-import api.controllers.AccountAuth;
-import api.controllers.BookStore;
-import api.models.request.AddListOfBooksRq;
-import api.models.request.DeleteBookRq;
-import api.models.request.Isbn;
-import api.models.request.LoginRq;
-import api.models.response.*;
+import apiTools.controllers.Account;
+import apiTools.controllers.AccountAuth;
+import apiTools.controllers.BookStore;
+import apiTools.models.request.AddListOfBooksRq;
+import apiTools.models.request.DeleteBookRq;
+import apiTools.models.request.Isbn;
+import apiTools.models.request.LoginRq;
+import apiTools.models.response.*;
 import config.user.UserConfigProvider;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -16,35 +16,35 @@ import tests.baseTests.BaseTestApi;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@Tag("api")
+@Tag("apiTools")
 public class BookStoreApiTests extends BaseTestApi {
 
-    TokenRs tokenViewModel;
-    LoginRs loginResponse;
+    TokenRs tokenRs;
+    LoginRs loginRs;
     UserInfoRs userInfoRs;
-    BookRs[] booksArray;
+    BookRs[] booksRs;
     LoginRq loginRq = new LoginRq(UserConfigProvider.userConfig.getLogin()
         , UserConfigProvider.userConfig.getPassword());
 
     @Test
     public void generateTokenTest() {
         step("Отправляем запрос на получение токена", () -> {
-            tokenViewModel = new AccountAuth()
+            tokenRs = new AccountAuth()
                 .generateToken(loginRq);
         });
 
         step("Проверяем, что токен не равен Null", () -> {
-            assertThat(tokenViewModel.getToken())
+            assertThat(tokenRs.getToken())
                 .isNotNull();
         });
 
         step("Проверяем сообщение об успешной авторизации", () -> {
-            assertThat(tokenViewModel.getResult())
+            assertThat(tokenRs.getResult())
                 .isEqualTo("User authorized successfully.");
         });
 
         step("Проверяем результат запроса", () -> {
-            assertThat(tokenViewModel.getStatus())
+            assertThat(tokenRs.getStatus())
                 .isEqualTo("Success");
         });
     }
@@ -52,17 +52,17 @@ public class BookStoreApiTests extends BaseTestApi {
     @Test
     public void loginTest() {
         step("Отправляем запрос авторизации", () -> {
-            loginResponse = new AccountAuth()
+            loginRs = new AccountAuth()
                 .login(loginRq);
         });
 
         step("Проверяем, что токен не равен Null", () -> {
-            assertThat(loginResponse.getToken())
+            assertThat(loginRs.getToken())
                 .isNotNull();
         });
 
         step("Проверяем, что userId не равен Null", () -> {
-            assertThat(loginResponse.getUserId())
+            assertThat(loginRs.getUserId())
                 .isNotNull();
         });
     }
@@ -70,18 +70,18 @@ public class BookStoreApiTests extends BaseTestApi {
     @Test
     public void userInfoTest() {
         step("Отправляем запрос авторизации", () -> {
-            loginResponse = new AccountAuth()
+            loginRs = new AccountAuth()
                 .login(loginRq);
         });
 
         step("Отправляем запрос получения информации о пользователе", () -> {
-            userInfoRs = new Account(loginResponse.getToken())
-                .getUserInfo(loginResponse.getUserId());
+            userInfoRs = new Account(loginRs.getToken())
+                .getUserInfo(loginRs.getUserId());
         });
 
         step("Проверяем, что userId пользователя совпадает с ответом из логина", () -> {
             assertThat(userInfoRs.getUserId())
-                .isEqualTo(loginResponse.getUserId());
+                .isEqualTo(loginRs.getUserId());
         });
 
         step("Проверяем, что userName пользователя совпадает с логином", () -> {
@@ -93,22 +93,22 @@ public class BookStoreApiTests extends BaseTestApi {
     @Test
     public void getArrayBooksTest() {
         step("Отправляем запрос авторизации", () -> {
-            loginResponse = new AccountAuth()
+            loginRs = new AccountAuth()
                 .login(loginRq);
         });
 
         step("Отправляем запрос получения информации о имеющихся книгах", () -> {
-            booksArray = new BookStore(loginResponse.getToken())
+            booksRs = new BookStore(loginRs.getToken())
                 .books();
         });
 
         step("Количество полученных книг должно быть равно 8", () -> {
-            assertThat(booksArray.length)
+            assertThat(booksRs.length)
                 .isEqualTo(8);
         });
 
         step("У всех книг есть ссылка на веб сайт", () -> {
-            assertThat(booksArray)
+            assertThat(booksRs)
                 .allMatch( e -> !e.getWebsite().equals(""));
         });
     }
@@ -116,12 +116,12 @@ public class BookStoreApiTests extends BaseTestApi {
     @Test
     public void checkBookPipeline() {
         step("Отправляем запрос авторизации", () -> {
-            loginResponse = new AccountAuth()
+            loginRs = new AccountAuth()
                 .login(loginRq);
         });
 
         step("Отправляем запрос получения информации о имеющихся книгах", () -> {
-            booksArray = new BookStore(loginResponse.getToken())
+            booksRs = new BookStore(loginRs.getToken())
                 .books();
         });
 
@@ -129,31 +129,31 @@ public class BookStoreApiTests extends BaseTestApi {
             AddListOfBooksRq rq = new AddListOfBooksRq();
 
             Isbn[] isbnCollection = new Isbn[]{
-                new Isbn(booksArray[0].getIsbn()),
+                new Isbn(booksRs[0].getIsbn()),
             };
 
-            rq.setUserId(loginResponse.getUserId());
+            rq.setUserId(loginRs.getUserId());
             rq.setCollectionOfIsbns(isbnCollection);
 
-            new BookStore(loginResponse.getToken())
+            new BookStore(loginRs.getToken())
                 .book(rq);
         });
 
         step("Проверяем, что книга отображается в коллекции", () -> {
-            userInfoRs = new Account(loginResponse.getToken())
-                .getUserInfo(loginResponse.getUserId());
+            userInfoRs = new Account(loginRs.getToken())
+                .getUserInfo(loginRs.getUserId());
 
             assertThat(userInfoRs.getBooks().length)
                 .isEqualTo(1);
 
             assertThat(userInfoRs.getBooks()[0].getIsbn())
-                .isEqualTo(booksArray[0].getIsbn());
+                .isEqualTo(booksRs[0].getIsbn());
         });
 
         step("Удаляем книгу из коллекции", () -> {
-            DeleteBookRq rq = new DeleteBookRq( booksArray[0].getIsbn(), loginResponse.getUserId());
+            DeleteBookRq rq = new DeleteBookRq( booksRs[0].getIsbn(), loginRs.getUserId());
 
-            new BookStore(loginResponse.getToken())
+            new BookStore(loginRs.getToken())
                 .deleteBook(rq);
         });
     }

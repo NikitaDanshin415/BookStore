@@ -1,6 +1,6 @@
 package tests.baseTests;
 
-import api.helpers.Attacher;
+import apiTools.Attacher;
 import config.SettingTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

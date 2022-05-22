@@ -33,7 +33,6 @@ public class SettingTest {
     }
 
     public void configureApi(){
-        Configuration.baseUrl = AppConfigProvider.appConfig.getUrl();
         RestAssured.baseURI = AppConfigProvider.appConfig.getApiUrl();
     }
 }

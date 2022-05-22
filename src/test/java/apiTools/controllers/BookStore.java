@@ -1,10 +1,10 @@
-package api.controllers;
+package apiTools.controllers;
 
-import api.helpers.spec.RequestSpec;
-import api.helpers.spec.ResponseSpec;
-import api.models.request.AddListOfBooksRq;
-import api.models.request.DeleteBookRq;
-import api.models.response.BookRs;
+import apiTools.helpers.spec.RequestSpec;
+import apiTools.helpers.spec.ResponseSpec;
+import apiTools.models.request.AddListOfBooksRq;
+import apiTools.models.request.DeleteBookRq;
+import apiTools.models.response.BookRs;
 
 import static io.restassured.RestAssured.given;
 

@@ -1,4 +1,4 @@
-package ui.pageObject;
+package uiTools.pageObject;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -8,7 +8,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
     private final SelenideElement pageHeader = $(".main-header");
-    private final SelenideElement loadingLabel = $("#loading-label");
+    private final SelenideElement infoMessage = $("#loading-label");
+    private final SelenideElement profileLink = $("[href='/profile']");
 
     @Step("В шапке страницы должен отображаться заголовок {text}")
     public LoginPage pageHeaderIs(String text){
@@ -19,10 +20,16 @@ public class LoginPage {
     }
 
     @Step("На странице должен отображаться текст {text}")
-    public LoginPage pageTitleIs(String text){
-        pageHeader
+    public LoginPage pageHaveMessage(String text){
+        infoMessage
             .shouldHave(Condition.text(text));
 
         return this;
+    }
+
+    @Step("Нажать на ссылку перехода в профиль")
+    public void toProfile(){
+        profileLink
+            .click();
     }
 }

@@ -1,8 +1,8 @@
-package api.controllers;
+package apiTools.controllers;
 
-import api.helpers.spec.RequestSpec;
-import api.helpers.spec.ResponseSpec;
-import api.models.response.UserInfoRs;
+import apiTools.helpers.spec.RequestSpec;
+import apiTools.helpers.spec.ResponseSpec;
+import apiTools.models.response.UserInfoRs;
 
 import static io.restassured.RestAssured.given;
 

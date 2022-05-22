@@ -1,4 +1,4 @@
-package api.helpers;
+package apiTools;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Allure;

@@ -1,4 +1,4 @@
-package api.models.request;
+package apiTools.models.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
