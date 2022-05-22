@@ -4,9 +4,9 @@ import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-    "classpath:config/userConfig.properties",
-    "system:properties",
     "system:env",
+    "system:properties",
+    "classpath:config/userConfig.properties",
 })
 public interface UserConfig extends Config {
     @Config.Key("login")
@@ -15,3 +15,5 @@ public interface UserConfig extends Config {
     @Config.Key("password")
     String getPassword();
 }
+
+
