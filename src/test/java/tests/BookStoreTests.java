@@ -9,7 +9,9 @@ import apiTools.models.response.BookRs;
 import apiTools.models.response.LoginRs;
 import com.codeborne.selenide.Selenide;
 import config.user.UserConfigProvider;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 import tests.baseTests.BaseTest;
@@ -19,7 +21,8 @@ import uiTools.pageObject.ProfilePage;
 
 import static io.qameta.allure.Allure.step;
 
-
+@Tags({@Tag("apiUi"), @Tag("regress")})
+@DisplayName("Тесты магазина книг")
 public class BookStoreTests extends BaseTest {
 
     LoginRq loginRq = new LoginRq(UserConfigProvider.userConfig.getLogin()
@@ -29,6 +32,7 @@ public class BookStoreTests extends BaseTest {
 
     @Test
     @Tag("Store")
+    @DisplayName("Добавление и удаление книги из коллекции")
     public void test1() {
         step("Авторизация через АПИ", () -> {
             loginResponse = new AccountAuth()
@@ -58,7 +62,6 @@ public class BookStoreTests extends BaseTest {
             step("Открыть страницу авторизации", () -> {
                 Selenide.open("/login");
             });
-
 
             new LoginPage()
                 .pageHeaderIs("Login");

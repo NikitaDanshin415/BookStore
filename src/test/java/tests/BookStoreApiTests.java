@@ -9,14 +9,19 @@ import apiTools.models.request.Isbn;
 import apiTools.models.request.LoginRq;
 import apiTools.models.response.*;
 import config.user.UserConfigProvider;
+import io.qameta.allure.Description;
+import io.qameta.allure.Features;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import tests.baseTests.BaseTestApi;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@Tag("apiTools")
+@Tags({@Tag("api"), @Tag("regress")})
+@DisplayName("Тесты АПИ")
 public class BookStoreApiTests extends BaseTestApi {
 
     TokenRs tokenRs;
@@ -27,6 +32,7 @@ public class BookStoreApiTests extends BaseTestApi {
         , UserConfigProvider.userConfig.getPassword());
 
     @Test
+    @DisplayName("Генерация токена")
     public void generateTokenTest() {
         step("Отправляем запрос на получение токена", () -> {
             tokenRs = new AccountAuth()
@@ -50,6 +56,7 @@ public class BookStoreApiTests extends BaseTestApi {
     }
 
     @Test
+    @DisplayName("Авторизация")
     public void loginTest() {
         step("Отправляем запрос авторизации", () -> {
             loginRs = new AccountAuth()
@@ -68,6 +75,7 @@ public class BookStoreApiTests extends BaseTestApi {
     }
 
     @Test
+    @DisplayName("Получение информации о пользователе")
     public void userInfoTest() {
         step("Отправляем запрос авторизации", () -> {
             loginRs = new AccountAuth()
@@ -91,6 +99,7 @@ public class BookStoreApiTests extends BaseTestApi {
     }
 
     @Test
+    @DisplayName("Получение списка книг в магазине")
     public void getArrayBooksTest() {
         step("Отправляем запрос авторизации", () -> {
             loginRs = new AccountAuth()
@@ -114,6 +123,8 @@ public class BookStoreApiTests extends BaseTestApi {
     }
 
     @Test
+    @DisplayName("Проверка работы корзины")
+    @Description("Через апи проверяем добавление книги в коллекцию и ее удаление из коллекции")
     public void checkBookPipeline() {
         step("Отправляем запрос авторизации", () -> {
             loginRs = new AccountAuth()

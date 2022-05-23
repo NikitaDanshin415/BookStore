@@ -10,7 +10,7 @@ public class ModalWindow {
     private final SelenideElement modalWindow = $(".modal-content");
     private final SelenideElement okBtn = $(".modal-content #closeSmallModal-ok");
 
-    @Step("Окно отображается на странице")
+    @Step("Модальное окно отображается на странице")
     public ModalWindow windowIsVisible(){
         modalWindow
             .shouldBe(Condition.visible);
@@ -18,7 +18,7 @@ public class ModalWindow {
         return this;
     }
 
-    @Step("Нажать кнопку 'ОК'")
+    @Step("Нажать кнопку 'ОК' в модальном окне")
     public ModalWindow clickOk(){
         okBtn
             .click();
