@@ -9,30 +9,33 @@ import io.restassured.RestAssured;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SettingTest {
-    public void configure(){
+    public void configure() {
         Configuration.browser = AppWebDriverConfigProvider.AppConfigWebDriver.getBrowser();
         Configuration.baseUrl = AppConfigProvider.appConfig.getUrl();
         RestAssured.baseURI = AppConfigProvider.appConfig.getApiUrl();
 
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-
         if (AppWebDriverConfigProvider.AppConfigWebDriver.isRemote()) {
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
-            Configuration.remote = "https://"
-                + AppWebDriverConfigProvider.AppConfigWebDriver.getRemoteLogin()
-                + ":" + AppWebDriverConfigProvider.AppConfigWebDriver.getRemotePassword()
-                + "@"
-                + AppWebDriverConfigProvider.AppConfigWebDriver.getRemoteDriverUrl()
-                + "/wd/hub";
+            configureSelenoid();
         }
 
-        Configuration.browserCapabilities = capabilities;
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
-    public void configureApi(){
+    public void configureApi() {
         RestAssured.baseURI = AppConfigProvider.appConfig.getApiUrl();
+    }
+
+    private void configureSelenoid() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
+
+        Configuration.remote = "https://"
+            + AppWebDriverConfigProvider.AppConfigWebDriver.getRemoteLogin()
+            + ":" + AppWebDriverConfigProvider.AppConfigWebDriver.getRemotePassword()
+            + "@"
+            + AppWebDriverConfigProvider.AppConfigWebDriver.getRemoteDriverUrl()
+            + "/wd/hub";
     }
 }

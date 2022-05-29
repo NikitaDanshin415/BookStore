@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserInfoRs {
-    @JsonProperty("userId")
     private String userId;
 
     @JsonProperty("username")

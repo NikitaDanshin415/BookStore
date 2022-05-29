@@ -15,5 +15,3 @@ public interface UserConfig extends Config {
     @Config.Key("password")
     String getPassword();
 }
-
-

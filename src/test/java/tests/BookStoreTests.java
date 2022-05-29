@@ -1,6 +1,6 @@
 package tests;
 
-import apiTools.controllers.AccountAuth;
+import apiTools.controllers.Account;
 import apiTools.controllers.BookStore;
 import apiTools.models.request.AddListOfBooksRq;
 import apiTools.models.request.Isbn;
@@ -25,8 +25,9 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("Тесты магазина книг")
 public class BookStoreTests extends BaseTest {
 
-    LoginRq loginRq = new LoginRq(UserConfigProvider.userConfig.getLogin()
-        , UserConfigProvider.userConfig.getPassword());
+    LoginRq loginRq = new LoginRq(
+        UserConfigProvider.userConfig.getLogin(),
+        UserConfigProvider.userConfig.getPassword());
     LoginRs loginResponse;
     BookRs[] booksArray;
 
@@ -35,7 +36,7 @@ public class BookStoreTests extends BaseTest {
     @DisplayName("Добавление и удаление книги из коллекции")
     public void test1() {
         step("Авторизация через АПИ", () -> {
-            loginResponse = new AccountAuth()
+            loginResponse = new Account()
                 .login(loginRq);
         });
 
@@ -51,7 +52,7 @@ public class BookStoreTests extends BaseTest {
                     new Isbn(booksArray[0].getIsbn()),
                 };
                 rq.setUserId(loginResponse.getUserId());
-                rq.setCollectionOfIsbns(isbnCollection);
+                rq.setCollectionOfIsbn(isbnCollection);
 
                 new BookStore(loginResponse.getToken())
                     .book(rq);
@@ -67,30 +68,29 @@ public class BookStoreTests extends BaseTest {
                 .pageHeaderIs("Login");
 
             step("Устанаваливаем куки в браузер", () -> {
-                Cookie cookieToken = new Cookie("token"
-                    , loginResponse.getToken()
-                    , "demoqa.com"
-                    , "/"
-                    , null);
+                Cookie cookieToken = new Cookie("token",
+                    loginResponse.getToken(),
+                    "demoqa.com",
+                    "/",
+                    null);
 
-                Cookie cookieExpires = new Cookie("expires"
-                    , loginResponse.getExpires()
-                    , "demoqa.com"
-                    , "/"
-                    , null);
+                Cookie cookieExpires = new Cookie("expires",
+                    loginResponse.getExpires(),
+                    "demoqa.com",
+                    "/",
+                    null);
 
-                Cookie cookieUserName = new Cookie("userName"
-                    , loginResponse.getUsername()
-                    , "demoqa.com"
-                    , "/"
-                    , null);
+                Cookie cookieUserName = new Cookie("userName",
+                    loginResponse.getUsername(),
+                    "demoqa.com",
+                    "/",
+                    null);
 
-                Cookie cookieUserId = new Cookie("userID"
-                    , loginResponse.getUserId()
-                    , "demoqa.com"
-                    , "/"
-                    , null);
-
+                Cookie cookieUserId = new Cookie("userID",
+                    loginResponse.getUserId(),
+                    "demoqa.com",
+                    "/",
+                    null);
 
                 setCookieToWebDriver(cookieToken);
                 setCookieToWebDriver(cookieExpires);

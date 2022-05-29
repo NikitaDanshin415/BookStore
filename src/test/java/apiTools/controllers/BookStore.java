@@ -49,5 +49,4 @@ public class BookStore {
             .then()
             .spec(responseSpec.deleteResponseSpecification());
     }
-
 }

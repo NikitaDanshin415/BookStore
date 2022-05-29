@@ -3,6 +3,7 @@ package tests.baseTests;
 import apiTools.Attacher;
 import config.SettingTest;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.Cookie;
 
@@ -12,9 +13,13 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public abstract class BaseTest {
     @BeforeEach
-    void beforeAll() {
-        new SettingTest().configure();
+    void beforeEach() {
         open("");
+    }
+
+    @BeforeAll
+    static void beforeAll() {
+        new SettingTest().configure();
     }
 
     @AfterEach
@@ -30,6 +35,7 @@ public abstract class BaseTest {
     /**
      * Добавить куки в браузер селенида.
      */
+    //todo вынести в отдельный класс
     protected void setCookieToWebDriver(Cookie cookie){
         getWebDriver().manage().addCookie(cookie);
     }
