@@ -73,9 +73,13 @@ flowchart LR
     
 	A[Test]:::class1 -.Использует.-o B[PageObject]:::class2
 	B -.Использует.-o C[PageElements]:::class3
+	A -.Использует.-o F[API]:::class2
+	A -.Использует.-o G[DTO Model]:::class3
+	F -.Использует.-o G
 	A -.Берет данные из.-x D[OwnerConfig]
 	A --Наследуется от--> E[BaseTest]:::class1
 	E -.Берет данные из.-x D
+
 ```
 
 <h2>:book:<a name='runningTests'>Запуск тестов</a></h2>
