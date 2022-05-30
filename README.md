@@ -9,7 +9,8 @@
     + [Запуск тестов в Jenkins](#runningTestsJenkins)
 + [Результаты](#results)
   + [Allure отчет о прохождении тестов](#resultsAllure)
-  + [Результаты тестирования в TMS](#resultInTms)
+  + [Результаты выполнения API запроса в Allure отчете](#apiResultsInAllure)
+  + [Результаты тестирования в TMS](#resultsInTms')
   + [Результаты в Jira](#resultsInJira)
   + [Сценарии тестирования в TMS](#testCaseInTms)
   + [Уведомления](#resultNotification)
@@ -120,7 +121,7 @@ flowchart LR
     <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_3.png" />
 </p>
 
-<h3>:book:<a name='resultsInTms'>Результаты выполнения API запроса в Allure отчете</a></h3>
+<h3>:book:<a name='apiResultsInAllure'>Результаты выполнения API запроса в Allure отчете</a></h3>
 <p align="center">
     <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_2.png" />
 </p>
@@ -140,7 +141,7 @@ flowchart LR
 <h3>:book:<a name='testCaseInTms'>Сценарии тестирования в TMS</a></h3>
 На освное написанных тестов, в системе управления тестовыми сценариями автоматически были созданы тест кейсы для пройденных тестов.
 <p align="center">
-    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_1/6.PNG" />
+    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_4.png.PNG" />
 </p>
 
 
