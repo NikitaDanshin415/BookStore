@@ -107,7 +107,7 @@ flowchart LR
 <p>2. По результатам прохождения тестов формируются Allure отчет, а так же происходит интеграция результатов в TMS AllureTestOps</p>
 
 <p align="center">
-    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_1/1.PNG.png" />
+    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_1.png" />
 </p>
 
 <h2>:cookie:<a name='results'>Результаты</a></h2>
@@ -116,14 +116,13 @@ flowchart LR
 где была ошибка в случае ее обнаружения.
 
 <p align="center">
-    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_1/2.PNG" />
-    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_1/4.PNG" />
+    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_3.png" />
 </p>
 
 <h3>:book:<a name='resultsInTms'>Результаты в TSM</a></h3>
 После прохождения тестов, результаты автоматически имопртируются в TMS, где их может посмотреть любой участник команды.
 <p align="center">
-    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_1/5.PNG" />
+    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_4.png" />
 </p>
 
 <h3>:book:<a name='resultsInJira'>Результаты в Jira</a></h3>
