@@ -149,5 +149,5 @@ flowchart LR
 
 <h3>:book:<a name='resultVideo'>Видео прохождения тестов</a></h3>
 <p align="center">
-    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_1/pikabu.gif" />
+    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/33680cf1661777f81c577c96b7182861.gif" />
 </p>
