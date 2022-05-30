@@ -110,8 +110,8 @@ flowchart LR
     <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_1.png" />
 </p>
 
-<h2>:cookie:<a name='results'>Результаты</a></h2>
-<h3>:cookie:<a name='resultsAllure'>Allure отчет о прохождении тестов</a></h3>
+<h2>:book:<a name='results'>Результаты</a></h2>
+<h3>:book:<a name='resultsAllure'>Allure отчет о прохождении тестов</a></h3>
 На освнове результатов тестов формируется красивый Allure отчет. По которому можно посмотреть как прошли тесты и быстро определить
 где была ошибка в случае ее обнаружения.
 
