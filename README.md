@@ -152,7 +152,7 @@ flowchart LR
 <h3>:book:<a name='testCaseInTms'>Сценарии тестирования в TMS</a></h3>
 На освное написанных тестов, в системе управления тестовыми сценариями автоматически были созданы тест кейсы для пройденных тестов.
 <p align="center">
-    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_4.png.PNG" />
+    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_4.png" />
 </p>
 
 
