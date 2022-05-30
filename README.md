@@ -119,6 +119,11 @@ flowchart LR
     <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_3.png" />
 </p>
 
+<h3>:book:<a name='resultsInTms'>Результаты выполнения API запроса в Allure отчете</a></h3>
+<p align="center">
+    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_2.png" />
+</p>
+
 <h3>:book:<a name='resultsInTms'>Результаты в TSM</a></h3>
 После прохождения тестов, результаты автоматически имопртируются в TMS, где их может посмотреть любой участник команды.
 <p align="center">
@@ -128,7 +133,7 @@ flowchart LR
 <h3>:book:<a name='resultsInJira'>Результаты в Jira</a></h3>
 Результаты из TMS имопртируются в задачу Jira
 <p align="center">
-    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_1/8.png" />
+    <img title="Jenkins" src="https://github.com/NikitaDanshin415/NikitaDanshin415/blob/main/diploma_2/Screenshot_5.png" />
 </p>
 
 <h3>:book:<a name='testCaseInTms'>Сценарии тестирования в TMS</a></h3>
