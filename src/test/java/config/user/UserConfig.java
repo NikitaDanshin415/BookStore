@@ -9,9 +9,7 @@ import org.aeonbits.owner.Config;
     "classpath:config/userConfig.properties",
 })
 public interface UserConfig extends Config {
-    @Config.Key("login")
-    String getLogin();
+    String login();
 
-    @Config.Key("password")
-    String getPassword();
+    String password();
 }

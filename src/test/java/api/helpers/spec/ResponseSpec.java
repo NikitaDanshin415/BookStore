@@ -1,4 +1,4 @@
-package apiTools.helpers.spec;
+package api.helpers.spec;
 
 
 import io.restassured.builder.ResponseSpecBuilder;
@@ -26,13 +26,13 @@ public class ResponseSpec {
             .log(LogDetail.ALL)
             .build();
     }
+
     public ResponseSpecification addResponseSpecification() {
         return new ResponseSpecBuilder()
             .expectStatusCode(201)
             .log(LogDetail.ALL)
             .build();
     }
-
 
     public ResponseSpecification loginResponseSpecification() {
         return new ResponseSpecBuilder()

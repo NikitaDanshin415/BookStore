@@ -1,4 +1,4 @@
-package uiTools.pageElements;
+package pages.pageElements;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -11,7 +11,7 @@ public class ModalWindow {
     private final SelenideElement okBtn = $(".modal-content #closeSmallModal-ok");
 
     @Step("Модальное окно отображается на странице")
-    public ModalWindow windowIsVisible(){
+    public ModalWindow windowIsVisible() {
         modalWindow
             .shouldBe(Condition.visible);
 
@@ -19,7 +19,7 @@ public class ModalWindow {
     }
 
     @Step("Нажать кнопку 'ОК' в модальном окне")
-    public ModalWindow clickOk(){
+    public ModalWindow clickOk() {
         okBtn
             .click();
 
