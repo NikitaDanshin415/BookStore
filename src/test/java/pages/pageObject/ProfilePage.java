@@ -1,4 +1,4 @@
-package uiTools.pageObject;
+package pages.pageObject;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
@@ -11,7 +11,7 @@ public class ProfilePage {
     private final ElementsCollection bookList = $$(".rt-tr-group");
 
     @Step("Проверяем наличие книги '{bookTitle}' в таблице")
-    public ProfilePage tableContainsBook(String bookTitle){
+    public ProfilePage tableContainsBook(String bookTitle) {
         bookList
             .filter(Condition.text(bookTitle))
             .shouldHave(CollectionCondition.size(1));
@@ -20,7 +20,7 @@ public class ProfilePage {
     }
 
     @Step("Удаляем книгу '{bookTitle}' из таблицы")
-    public ProfilePage deleteBook(String bookTitle){
+    public ProfilePage deleteBook(String bookTitle) {
         bookList
             .filter(Condition.text(bookTitle))
             .get(0)
@@ -31,7 +31,7 @@ public class ProfilePage {
     }
 
     @Step("Проверяем отсутствие книги '{bookTitle}' в таблице")
-    public ProfilePage tableNotContainsBook(String bookTitle){
+    public ProfilePage tableNotContainsBook(String bookTitle) {
         bookList
             .filter(Condition.text(bookTitle))
             .shouldHave(CollectionCondition.size(0));

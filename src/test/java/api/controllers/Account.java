@@ -1,11 +1,11 @@
-package apiTools.controllers;
+package api.controllers;
 
-import apiTools.helpers.spec.RequestSpec;
-import apiTools.helpers.spec.ResponseSpec;
-import apiTools.models.request.LoginRq;
-import apiTools.models.response.LoginRs;
-import apiTools.models.response.TokenRs;
-import apiTools.models.response.UserInfoRs;
+import api.helpers.spec.RequestSpec;
+import api.helpers.spec.ResponseSpec;
+import api.models.request.LoginRq;
+import api.models.response.LoginRs;
+import api.models.response.TokenRs;
+import api.models.response.UserInfoRs;
 
 import static io.restassured.RestAssured.given;
 

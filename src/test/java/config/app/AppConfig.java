@@ -8,10 +8,8 @@ import org.aeonbits.owner.Config;
     "system:env",
     "classpath:config/appConfig.properties"
 })
-public interface AppConfig extends Config{
-    @Config.Key("url")
-    String getUrl();
+public interface AppConfig extends Config {
+    String url();
 
-    @Config.Key("apiUrl")
-    String getApiUrl();
+    String apiUrl();
 }

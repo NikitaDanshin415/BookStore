@@ -9,20 +9,15 @@ import org.aeonbits.owner.Config;
     "classpath:config/userConfig.properties"
 })
 public interface AppWebDriverConfig extends Config {
-    @Key("browser")
     @DefaultValue("chrome")
-    String getBrowser();
+    String browser();
 
-    @Key("isRemote")
     @DefaultValue("false")
     Boolean isRemote();
 
-    @Key("remoteLogin")
-    String getRemoteLogin();
+    String remoteLogin();
 
-    @Key("remotePassword")
-    String getRemotePassword();
+    String remotePassword();
 
-    @Key("remoteDriverUrl")
-    String getRemoteDriverUrl();
+    String remoteDriverUrl();
 }

@@ -1,4 +1,4 @@
-package apiTools;
+package tools;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Allure;
@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
-public class Attacher {
+public class AllureAttach {
     @Attachment(value = "{attachName}", type = "text/plain")
     public static String attachAsText(String attachName, String message) {
         return message;
@@ -55,7 +55,7 @@ public class Attacher {
         return null;
     }
 
-    public static String getSessionId(){
+    public static String getSessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
     }
 

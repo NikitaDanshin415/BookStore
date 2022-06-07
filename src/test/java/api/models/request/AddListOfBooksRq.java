@@ -1,4 +1,4 @@
-package apiTools.models.request;
+package api.models.request;
 
 import lombok.Data;
 

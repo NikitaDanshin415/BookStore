@@ -1,12 +1,12 @@
 package tests;
 
-import apiTools.controllers.Account;
-import apiTools.controllers.BookStore;
-import apiTools.models.request.AddListOfBooksRq;
-import apiTools.models.request.DeleteBookRq;
-import apiTools.models.request.Isbn;
-import apiTools.models.request.LoginRq;
-import apiTools.models.response.*;
+import api.controllers.Account;
+import api.controllers.BookStore;
+import api.models.request.AddListOfBooksRq;
+import api.models.request.DeleteBookRq;
+import api.models.request.Isbn;
+import api.models.request.LoginRq;
+import api.models.response.*;
 import config.user.UserConfigProvider;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
@@ -25,9 +25,11 @@ public class BookStoreApiTests extends BaseTestApi {
     LoginRs loginRs;
     UserInfoRs userInfoRs;
     BookRs[] booksRs;
-    LoginRq loginRq = new LoginRq(
-        UserConfigProvider.userConfig.getLogin(),
-        UserConfigProvider.userConfig.getPassword());
+    LoginRq loginRq = LoginRq
+        .builder()
+        .userName(UserConfigProvider.userConfig.login())
+        .password(UserConfigProvider.userConfig.password())
+        .build();
 
     @Test
     @DisplayName("Генерация токена")
@@ -92,7 +94,7 @@ public class BookStoreApiTests extends BaseTestApi {
 
         step("Проверяем, что userName пользователя совпадает с логином", () -> {
             assertThat(userInfoRs.getUserName())
-                .isEqualTo(UserConfigProvider.userConfig.getLogin());
+                .isEqualTo(UserConfigProvider.userConfig.login());
         });
     }
 
@@ -160,7 +162,11 @@ public class BookStoreApiTests extends BaseTestApi {
         });
 
         step("Удаляем книгу из коллекции", () -> {
-            DeleteBookRq rq = new DeleteBookRq(booksRs[0].getIsbn(), loginRs.getUserId());
+            DeleteBookRq rq = DeleteBookRq
+                .builder()
+                .isbn(booksRs[0].getIsbn())
+                .userId(loginRs.getUserId())
+                .build();
 
             new BookStore(loginRs.getToken())
                 .deleteBook(rq);

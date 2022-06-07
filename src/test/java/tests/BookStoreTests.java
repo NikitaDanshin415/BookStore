@@ -1,23 +1,23 @@
 package tests;
 
-import apiTools.controllers.Account;
-import apiTools.controllers.BookStore;
-import apiTools.models.request.AddListOfBooksRq;
-import apiTools.models.request.Isbn;
-import apiTools.models.request.LoginRq;
-import apiTools.models.response.BookRs;
-import apiTools.models.response.LoginRs;
+import api.controllers.Account;
+import api.controllers.BookStore;
+import api.models.request.AddListOfBooksRq;
+import api.models.request.Isbn;
+import api.models.request.LoginRq;
+import api.models.response.BookRs;
+import api.models.response.LoginRs;
 import com.codeborne.selenide.Selenide;
 import config.user.UserConfigProvider;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Cookie;
 import tests.baseTests.BaseTest;
-import uiTools.pageElements.ModalWindow;
-import uiTools.pageObject.LoginPage;
-import uiTools.pageObject.ProfilePage;
+import tools.CommonTools;
+import pages.pageElements.ModalWindow;
+import pages.pageObject.LoginPage;
+import pages.pageObject.ProfilePage;
 
 import static io.qameta.allure.Allure.step;
 
@@ -25,11 +25,17 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("Тесты магазина книг")
 public class BookStoreTests extends BaseTest {
 
-    LoginRq loginRq = new LoginRq(
-        UserConfigProvider.userConfig.getLogin(),
-        UserConfigProvider.userConfig.getPassword());
+    LoginRq loginRq = LoginRq
+        .builder()
+        .userName(UserConfigProvider.userConfig.login())
+        .password(UserConfigProvider.userConfig.password())
+        .build();
+
     LoginRs loginResponse;
     BookRs[] booksArray;
+
+    private final String domain = "demoqa.com";
+    private final String path = "/";
 
     @Test
     @Tag("Store")
@@ -68,34 +74,11 @@ public class BookStoreTests extends BaseTest {
                 .pageHeaderIs("Login");
 
             step("Устанаваливаем куки в браузер", () -> {
-                Cookie cookieToken = new Cookie("token",
-                    loginResponse.getToken(),
-                    "demoqa.com",
-                    "/",
-                    null);
-
-                Cookie cookieExpires = new Cookie("expires",
-                    loginResponse.getExpires(),
-                    "demoqa.com",
-                    "/",
-                    null);
-
-                Cookie cookieUserName = new Cookie("userName",
-                    loginResponse.getUsername(),
-                    "demoqa.com",
-                    "/",
-                    null);
-
-                Cookie cookieUserId = new Cookie("userID",
-                    loginResponse.getUserId(),
-                    "demoqa.com",
-                    "/",
-                    null);
-
-                setCookieToWebDriver(cookieToken);
-                setCookieToWebDriver(cookieExpires);
-                setCookieToWebDriver(cookieUserName);
-                setCookieToWebDriver(cookieUserId);
+                CommonTools commonTools = new CommonTools();
+                commonTools.setCookieToWebDriver("token", loginResponse.getToken(), domain, path);
+                commonTools.setCookieToWebDriver("expires", loginResponse.getExpires(), domain, path);
+                commonTools.setCookieToWebDriver("userName", loginResponse.getUsername(), domain, path);
+                commonTools.setCookieToWebDriver("userID", loginResponse.getUserId(), domain, path);
             });
 
             step("Обновить страницу", Selenide::refresh);

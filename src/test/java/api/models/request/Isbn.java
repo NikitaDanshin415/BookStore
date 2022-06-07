@@ -1,4 +1,4 @@
-package apiTools.models.request;
+package api.models.request;
 
 import lombok.Data;
 
@@ -7,6 +7,5 @@ public class Isbn {
     public Isbn(String isbn) {
         this.isbn = isbn;
     }
-
     private String isbn;
 }

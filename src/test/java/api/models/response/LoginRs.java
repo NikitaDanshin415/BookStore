@@ -1,4 +1,4 @@
-package apiTools.models.response;
+package api.models.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -7,10 +7,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LoginRs {
     private String token;
-
     private String userId;
-
     private String username;
-
     private String expires;
 }

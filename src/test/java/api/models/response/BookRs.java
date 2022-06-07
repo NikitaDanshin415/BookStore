@@ -1,6 +1,7 @@
-package apiTools.models.response;
+package api.models.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -10,7 +11,8 @@ public class BookRs {
     private String title;
     private String subTitle;
     private String author;
-    private String publish_date;
+    @JsonProperty("publish_date")
+    private String publishDate;
     private String publisher;
     private String pages;
     private String description;
